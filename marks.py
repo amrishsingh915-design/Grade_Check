@@ -1,5 +1,7 @@
 """Collect marks for three students and display a formatted result table."""
 
+from topper import display_topper
+
 
 SUBJECTS = ("DBMS", "DSA", "OS")
 STUDENT_COUNT = 3
@@ -86,13 +88,7 @@ def main() -> None:
     for row in rows:
         print(" | ".join(value.ljust(widths[index]) for index, value in enumerate(row)))
 
-    highest_total = max(student["total"] for student in students)
-    toppers = [
-        student["name"]
-        for student in students
-        if student["total"] == highest_total
-    ]
-    print(f"\nTopper{'s' if len(toppers) > 1 else ''}: {', '.join(toppers)}")
+    display_topper(students)
 
 
 if __name__ == "__main__":
